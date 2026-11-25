@@ -25,3 +25,5 @@ Each bank supports up to four resources and four jobs. Its units are bookkeeping
 The fixture declares three lathe units and two kiln units, with maxima of `[3,2]` and `[2,2]` for jobs A and B. A can take `[1,1]` first. B's `[1,1]` request would leave `[1,0]` free, with both jobs still needing a kiln unit to reach their maxima. The bank refuses the request. After A finishes, B can take the same units.
 
 Run `python -m pytest tests -q` after installing `requirements-dev.txt`.
+
+[Submission](SUBMISSION.md) · [StudioNet proof and receipt links](LIVE_PROOFS.md)

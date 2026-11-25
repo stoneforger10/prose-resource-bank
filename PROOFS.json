@@ -1,0 +1,418 @@
+{
+  "network": "StudioNet",
+  "source_commit": "11cb37e9fb1f6d66317c6c3604fde2de267a21c9",
+  "transactions": [
+    {
+      "step": "deploy",
+      "signer": "0x1B0ec23324bF598fcC78A4a8294A180F5e17F50A",
+      "nonce": "0x0",
+      "functionName": "deploy",
+      "args": [],
+      "fee_wei": "78852000002588",
+      "hash": "0x60170f1cfd6e78eb008be4381faa40e86dae9558a693ba2dd56e3945db9c82f7",
+      "receipt": {
+        "hash": "0x60170f1cfd6e78eb008be4381faa40e86dae9558a693ba2dd56e3945db9c82f7",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 4,
+        "idle_votes": 1,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "open-bank",
+      "signer": "0xd63DEEEbBA2B5De31d99733fD6821cbE836450e2",
+      "nonce": "0x0",
+      "functionName": "open_bank",
+      "args": [
+        "stoneforger10/prose-resource-bank/11cb37e9fb1f6d66317c6c3604fde2de267a21c9/fixtures/bank.json",
+        "beff26ae8d645748e747000b04d8ced4aa2a382767181e0c21b1c5deca8b2fc6",
+        "[\"0xd63deeebba2b5de31d99733fd6821cbe836450e2\",\"0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f\"]"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0xcffe7c5c6599f471e20da5bfba2d4d9daab77f2f5ce4f5fcfb584a891060c578",
+      "receipt": {
+        "hash": "0xcffe7c5c6599f471e20da5bfba2d4d9daab77f2f5ce4f5fcfb584a891060c578",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "a-request",
+      "signer": "0xd63DEEEbBA2B5De31d99733fD6821cbE836450e2",
+      "nonce": "0x1",
+      "functionName": "request",
+      "args": [
+        "c6f1f016d7f3a0d15fddc6e6d7bd29aff782b9cbefe2b8c67c358616ffd4d7fe",
+        "[1,1]"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0xf4a4c8a6a44a0480a5869d7423e2115b5ff58ce27aa7e8dfd3de59c757d81405",
+      "receipt": {
+        "hash": "0xf4a4c8a6a44a0480a5869d7423e2115b5ff58ce27aa7e8dfd3de59c757d81405",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "b-unsafe-denied",
+      "signer": "0xadba52c528c1fCd8fBD464AC4B0e9bB97c3B1F0F",
+      "nonce": "0x0",
+      "functionName": "request",
+      "args": [
+        "c6f1f016d7f3a0d15fddc6e6d7bd29aff782b9cbefe2b8c67c358616ffd4d7fe",
+        "[1,1]"
+      ],
+      "fee_wei": "78852000002588",
+      "error": "Request leaves no safe completion order",
+      "hash": "0x5f0d8a23d0f58205043c93367d33abddfd839236cd16ceec9d18ae0537e10b52",
+      "receipt": {
+        "hash": "0x5f0d8a23d0f58205043c93367d33abddfd839236cd16ceec9d18ae0537e10b52",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "ERROR",
+        "consensus": "MAJORITY_AGREE",
+        "expected_error_matched": true,
+        "committed": false,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "a-finish",
+      "signer": "0xd63DEEEbBA2B5De31d99733fD6821cbE836450e2",
+      "nonce": "0x2",
+      "functionName": "finish",
+      "args": [
+        "c6f1f016d7f3a0d15fddc6e6d7bd29aff782b9cbefe2b8c67c358616ffd4d7fe"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0x768c3945ee552ae904db830bbda702ae4825ac1da07c0a47575ef232d4f7387e",
+      "receipt": {
+        "hash": "0x768c3945ee552ae904db830bbda702ae4825ac1da07c0a47575ef232d4f7387e",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "b-request",
+      "signer": "0xadba52c528c1fCd8fBD464AC4B0e9bB97c3B1F0F",
+      "nonce": "0x1",
+      "functionName": "request",
+      "args": [
+        "c6f1f016d7f3a0d15fddc6e6d7bd29aff782b9cbefe2b8c67c358616ffd4d7fe",
+        "[1,1]"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0x727e1847dae05c794923ecd57a87ac1c9043d323a75c71166a3afd28d1301e25",
+      "receipt": {
+        "hash": "0x727e1847dae05c794923ecd57a87ac1c9043d323a75c71166a3afd28d1301e25",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    },
+    {
+      "step": "b-finish",
+      "signer": "0xadba52c528c1fCd8fBD464AC4B0e9bB97c3B1F0F",
+      "nonce": "0x2",
+      "functionName": "finish",
+      "args": [
+        "c6f1f016d7f3a0d15fddc6e6d7bd29aff782b9cbefe2b8c67c358616ffd4d7fe"
+      ],
+      "fee_wei": "78852000002588",
+      "hash": "0x976e81c95ec1352eccdcdc418f96780229c886fa8c2d4640eecf48d2f998313f",
+      "receipt": {
+        "hash": "0x976e81c95ec1352eccdcdc418f96780229c886fa8c2d4640eecf48d2f998313f",
+        "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+        "status": "FINALIZED",
+        "execution": "SUCCESS",
+        "consensus": "MAJORITY_AGREE",
+        "committed": true,
+        "leader_only": false,
+        "initial_validators": 5,
+        "agree_votes": 3,
+        "idle_votes": 2,
+        "disagree_votes": 0,
+        "validator_execution_seen": true
+      }
+    }
+  ],
+  "snapshots": {
+    "open-bank": {
+      "available": [
+        3,
+        2
+      ],
+      "controllers": [
+        "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+        "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+      ],
+      "finished": [
+        false,
+        false
+      ],
+      "held": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "safe_order": [
+        0,
+        1
+      ],
+      "specification": "3e25e5930d21dcc4cae2c07de3947959f9f7c30930432aa0a73f37906e66c96d",
+      "status": "READY"
+    },
+    "a-request": {
+      "available": [
+        2,
+        1
+      ],
+      "controllers": [
+        "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+        "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+      ],
+      "finished": [
+        false,
+        false
+      ],
+      "held": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "safe_order": [
+        0,
+        1
+      ],
+      "specification": "3e25e5930d21dcc4cae2c07de3947959f9f7c30930432aa0a73f37906e66c96d",
+      "status": "READY"
+    },
+    "b-unsafe-denied": {
+      "available": [
+        2,
+        1
+      ],
+      "controllers": [
+        "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+        "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+      ],
+      "finished": [
+        false,
+        false
+      ],
+      "held": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "safe_order": [
+        0,
+        1
+      ],
+      "specification": "3e25e5930d21dcc4cae2c07de3947959f9f7c30930432aa0a73f37906e66c96d",
+      "status": "READY"
+    },
+    "a-finish": {
+      "available": [
+        3,
+        2
+      ],
+      "controllers": [
+        "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+        "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+      ],
+      "finished": [
+        true,
+        false
+      ],
+      "held": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "safe_order": [
+        1
+      ],
+      "specification": "3e25e5930d21dcc4cae2c07de3947959f9f7c30930432aa0a73f37906e66c96d",
+      "status": "READY"
+    },
+    "b-request": {
+      "available": [
+        2,
+        1
+      ],
+      "controllers": [
+        "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+        "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+      ],
+      "finished": [
+        true,
+        false
+      ],
+      "held": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "safe_order": [
+        1
+      ],
+      "specification": "3e25e5930d21dcc4cae2c07de3947959f9f7c30930432aa0a73f37906e66c96d",
+      "status": "READY"
+    },
+    "b-finish": {
+      "available": [
+        3,
+        2
+      ],
+      "controllers": [
+        "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+        "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+      ],
+      "finished": [
+        true,
+        true
+      ],
+      "held": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "safe_order": [],
+      "specification": "3e25e5930d21dcc4cae2c07de3947959f9f7c30930432aa0a73f37906e66c96d",
+      "status": "READY"
+    }
+  },
+  "controllers": [
+    "0xd63deeebba2b5de31d99733fd6821cbe836450e2",
+    "0xadba52c528c1fcd8fbd464ac4b0e9bb97c3b1f0f"
+  ],
+  "test_faucet": [
+    {
+      "address": "0xd63DEEEbBA2B5De31d99733fD6821cbE836450e2",
+      "requested_wei": "10000000000000000"
+    },
+    {
+      "address": "0xadba52c528c1fCd8fBD464AC4B0e9bB97c3B1F0F",
+      "requested_wei": "10000000000000000"
+    }
+  ],
+  "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+  "source": {
+    "address": "0x50809c3c04e7713F15968bE7e419A191B138cFe5",
+    "source_match": true,
+    "sha256": "e8899ac04dc17c81e142667762b31ed1203f89f564f4f768e348a9d22f4a68f5"
+  },
+  "bank_key": "c6f1f016d7f3a0d15fddc6e6d7bd29aff782b9cbefe2b8c67c358616ffd4d7fe",
+  "specification": {
+    "claims": {
+      "capacity": [
+        3,
+        2
+      ],
+      "maximum": [
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "status": "READY"
+    },
+    "document": {
+      "claims": "The current resource pool contains three lathe units and two kiln units. The former pool had five lathe units and four kiln units. Job A may hold at most three lathe units and two kiln units at the same time. Job B may hold at most two lathe units and two kiln units at the same time. Both jobs start with no units allocated.",
+      "jobs": [
+        "A",
+        "B"
+      ],
+      "resources": [
+        "lathe",
+        "kiln"
+      ]
+    },
+    "sha256": "beff26ae8d645748e747000b04d8ced4aa2a382767181e0c21b1c5deca8b2fc6",
+    "text": "{\n  \"resources\": [\"lathe\", \"kiln\"],\n  \"jobs\": [\"A\", \"B\"],\n  \"claims\": \"The current resource pool contains three lathe units and two kiln units. The former pool had five lathe units and four kiln units. Job A may hold at most three lathe units and two kiln units at the same time. Job B may hold at most two lathe units and two kiln units at the same time. Both jobs start with no units allocated.\"\n}\n",
+    "url": "https://raw.githubusercontent.com/stoneforger10/prose-resource-bank/11cb37e9fb1f6d66317c6c3604fde2de267a21c9/fixtures/bank.json"
+  },
+  "verified": true
+}

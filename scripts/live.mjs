@@ -7,6 +7,7 @@ import {digest, sha, jsonSafe, rpc, receipt, source, read} from './check.mjs';
 const journal = 'PROOFS.json';
 const code = 'contracts/ProseResourceBank.py';
 const verifyOnly = process.argv.includes('--verify-only');
+const resumeDeployment = process.argv.includes('--resume-deployment');
 const proof = fs.existsSync(journal)
   ? JSON.parse(fs.readFileSync(journal, 'utf8'))
   : {network: 'StudioNet', source_commit: process.env.SOURCE_COMMIT ?? process.env.GITHUB_SHA ?? null,
@@ -95,8 +96,13 @@ async function transaction(step, account, functionName, args, error) {
   return {address: entry.receipt.address, result: jsonSafe(abi.calldata.decode(bytes.subarray(1)))};
 }
 
-assert(verifyOnly ? proof.verified : !proof.transactions.length,
-  'Use a fresh journal to broadcast, or verify a completed journal');
+assert(verifyOnly ? proof.verified : !proof.transactions.length ||
+  (resumeDeployment && proof.transactions.length === 1 &&
+    proof.transactions[0].step === 'deploy' && proof.transactions[0].hash),
+  'Use a fresh journal, a deployed contract with no other sends, or a completed journal');
+
+const [deployer] = proof.transactions;
+const {address} = deployer ? await transaction('deploy', null, 'deploy', []) : {};
 
 const accounts = verifyOnly ? [null, null] : [createAccount(), createAccount()];
 if (!verifyOnly) {
@@ -104,13 +110,17 @@ if (!verifyOnly) {
   proof.test_faucet = [];
   for (const account of accounts) {
     const amount = 10_000_000_000_000_000;
-    const response = await fetch('https://studio.genlayer.com/api', {
-      method: 'POST', headers: {'content-type': 'application/json'},
-      body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'sim_fundAccount', params: [account.address, amount]}),
-      signal: AbortSignal.timeout(20000),
-    });
-    const funded = await response.json();
-    assert(response.ok && !funded.error, 'Studio faucet request failed');
+    try {
+      const response = await fetch('https://studio.genlayer.com/api', {
+        method: 'POST', headers: {'content-type': 'application/json'},
+        body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'sim_fundAccount', params: [account.address, amount]}),
+        signal: AbortSignal.timeout(20000),
+      });
+      const funded = await response.json();
+      assert(response.ok && !funded.error, 'Studio faucet request failed');
+    } catch {
+      console.log('Checking test balance after an unconfirmed faucet response');
+    }
     const balance = BigInt(await rpc('eth_getBalance', [account.address, 'latest']));
     assert(balance >= BigInt(amount), 'Studio faucet did not credit the demo account');
     proof.test_faucet.push({address: account.address, requested_wei: String(amount)});
@@ -119,9 +129,9 @@ if (!verifyOnly) {
 }
 
 const [a, b] = accounts;
-const {address} = await transaction('deploy', a, 'deploy', []);
-proof.address = address;
-proof.source = await source(address);
+const contractAddress = address ?? (await transaction('deploy', a, 'deploy', [])).address;
+proof.address = contractAddress;
+proof.source = await source(contractAddress);
 save();
 
 const body = fs.readFileSync('fixtures/bank.json');
@@ -133,7 +143,7 @@ const key = digest({specification, controllers: proof.controllers});
 const {result: opened} = await transaction('open-bank', a, 'open_bank',
   [coordinate, sha256, JSON.stringify(proof.controllers)]);
 assert.equal(opened, key);
-const record = await read(address, 'get_specification', [specification]);
+const record = await read(contractAddress, 'get_specification', [specification]);
 assert.deepEqual(record, {
   url, sha256, text: body.toString('utf8'), document: JSON.parse(body),
   claims: {status: 'READY', capacity: [3, 2], maximum: [[3, 2], [2, 2]]},
@@ -146,7 +156,7 @@ async function snapshot(step, held, finished, available, safeOrder) {
   const expected = {specification, controllers: proof.controllers, status: 'READY',
     held, finished, available, safe_order: safeOrder};
   const state = verifyOnly && step !== 'b-finish'
-    ? proof.snapshots[step] : await read(address, 'get_bank', [key]);
+    ? proof.snapshots[step] : await read(contractAddress, 'get_bank', [key]);
   assert.deepEqual(state, expected);
   proof.snapshots[step] = state;
   save();
