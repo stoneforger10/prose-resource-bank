@@ -1,0 +1,5 @@
+{
+  "resources": ["lathe", "kiln"],
+  "jobs": ["A", "B"],
+  "claims": "The current resource pool contains three lathe units and two kiln units. The former pool had five lathe units and four kiln units. Job A may hold at most three lathe units and two kiln units at the same time. Job B may hold at most two lathe units and two kiln units at the same time. Both jobs start with no units allocated."
+}
